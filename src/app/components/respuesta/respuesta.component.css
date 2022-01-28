@@ -1,0 +1,10 @@
+.badge{
+    position: absolute;
+    right: .5rem;
+}
+.list-group-item{
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem 0;
+    position: relative;
+}

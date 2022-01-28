@@ -1,0 +1,27 @@
+<h5 class="card-title">Resultado</h5>
+<p class="card-text text-center">Este es el resultado del cuestionario!</p>
+<div *ngFor="let pregunta of listaPreguntas">
+    <h4 class="card-title">{{pregunta.descripcion}}</h4>
+    <ul class="list group ">
+        <ng-container *ngFor="let respuesta of pregunta.respuestas">
+            <li class="list-group-item " [ngClass]="{
+                'list-group-item-success': respuesta.esCorrecta && respuestasUsuario.includes(respuesta),
+                'list-group-item-danger': !respuesta.esCorrecta && respuestasUsuario.includes(respuesta)
+            }">
+                {{respuesta.nombre}}
+                <span class="badge py-0" *ngIf="respuesta.esCorrecta && respuestasUsuario.includes(respuesta)">
+                    <span class="material-icons-outlined text-success">check_circle</span>
+                </span>
+                <span class="badge py-0" *ngIf="!respuesta.esCorrecta && respuestasUsuario.includes(respuesta)">
+                    <span class="material-icons-outlined text-danger">cancel</span>
+                </span>
+            </li>
+            
+        </ng-container>
+    </ul>
+</div>
+<div class="row mt-4">
+    <div class="col-lg-4 offset-lg-4">
+        <button class="btn btn-lg btn-primary w-100" (click)="volver()">Volver</button>
+    </div>
+</div>
